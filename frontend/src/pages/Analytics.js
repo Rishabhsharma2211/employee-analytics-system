@@ -3,7 +3,7 @@ import React, {
   useState,
 } from "react";
 
-import axios from "axios";
+import API from "../services/api";
 
 function Analytics() {
 
@@ -21,8 +21,8 @@ function Analytics() {
     try {
 
       const response =
-        await axios.get(
-          "http://localhost:5000/api/employees/ai"
+        await API.get(
+          "/employees/ai"
         );
 
       setAiData(

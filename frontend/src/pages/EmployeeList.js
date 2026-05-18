@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
+import API from "../services/api";
 
 const EmployeeList = () => {
 
@@ -14,8 +15,8 @@ const EmployeeList = () => {
 
     try {
 
-      const response = await axios.get(
-        "http://localhost:5000/api/employees"
+      const response = await API.get(
+        "/employees"
       );
 
       setEmployees(response.data);
@@ -30,8 +31,8 @@ const EmployeeList = () => {
 
     try {
 
-      await axios.delete(
-        `http://localhost:5000/api/employees/${id}`
+      await API.delete(
+        `/employees/${id}`
       );
 
       fetchEmployees();
@@ -54,8 +55,6 @@ const EmployeeList = () => {
         Employee List
       </h1>
 
-      {/* SEARCH BAR */}
-
       <input
         type="text"
         placeholder="Search Employee..."
@@ -63,8 +62,6 @@ const EmployeeList = () => {
         onChange={(e) => setSearch(e.target.value)}
         className="w-full bg-gray-900 border border-gray-700 p-4 rounded-2xl mb-10 outline-none"
       />
-
-      {/* EMPLOYEE CARDS */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -110,8 +107,6 @@ const EmployeeList = () => {
               </p>
 
             </div>
-
-            {/* BUTTONS */}
 
             <div className="flex gap-4 mt-8">
 
