@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import API from "../services/api";
 
 const Register = () => {
 
@@ -21,9 +21,9 @@ const Register = () => {
     try {
 
       const response =
-        await axios.post(
+        await API.post(
 
-          "http://localhost:5000/api/auth/register",
+          "/auth/register",
 
           {
             name,
@@ -35,6 +35,8 @@ const Register = () => {
       console.log(response.data);
 
       alert("Registration Successful");
+
+      window.location.href = "/login";
 
     } catch (error) {
 

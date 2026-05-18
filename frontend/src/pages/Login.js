@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import API from "../services/api";
 
 const Login = () => {
 
@@ -18,9 +18,9 @@ const Login = () => {
     try {
 
       const response =
-        await axios.post(
+        await API.post(
 
-          "http://localhost:5000/api/auth/login",
+          "/auth/login",
 
           {
             email,
@@ -36,6 +36,8 @@ const Login = () => {
         "token",
         response.data.token
       );
+
+      window.location.href = "/";
 
     } catch (error) {
 
